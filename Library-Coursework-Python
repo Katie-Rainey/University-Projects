@@ -1,0 +1,202 @@
+#view books, loans and other
+def main():
+
+    print("if you would like to see all books on loan type '1'")
+    print("if you would like to see all books in library type '2'")
+    print("if you would like to see other options type '3'")
+
+    userChoice = input("enter choice:")
+
+    if userChoice == '1':
+        loans = read_loans_list("LOANS.txt")
+        print(loans)
+
+        searchAgain: str = input("Do you want to search again? ('y' for yes): ")
+        if searchAgain == 'y':
+            main()
+
+    elif userChoice == '2':
+        books = read_library_list("BOOKS.txt")
+        print(books)
+
+        searchAgain: str = input("Do you want to search again? ('y' for yes): ")
+        if searchAgain == 'y':
+            main()
+
+    elif userChoice == '3':
+        everything_else()
+
+        main()
+#display data in loans file if user chooses 
+def read_loans_list(filename):
+    # Open the file in read mode
+    file = open(filename, 'r')
+    # Read the contents of the file
+    contents = file.read()
+    # Close the file
+    file.close()
+    return contents
+
+#display the data in the books file if user chooses
+def read_library_list(filename):
+    # Open the file in read mode
+    file = open(filename, 'r')
+    # Read the contents of the file
+    contents = file.read()
+    # Close the file
+    file.close()
+    return contents
+
+
+# validate ids, return and create loans
+def everything_else():
+    print("type 'verify' to verify ID before creating loan")
+    print("type 'loan' to create loan")
+    print("type 'return' to return a book")
+    print("type 'end' to end program")
+
+    userChoice = input("enter choice:")
+
+    if userChoice == 'verify':
+        verifyLoan()
+
+        searchAgain: str = input("Do you want to search again? ('y' for yes): ")
+        if searchAgain == 'y':
+            main()
+
+    elif userChoice == 'loan':
+        create_loan()
+
+        searchAgain: str = input("Do you want to search again? ('y' for yes): ")
+        if searchAgain == 'y':
+            main()
+
+    elif userChoice == 'return':
+        searchReturn()
+
+        searchAgain: str = input("Do you want to search again? ('y' for yes): ")
+        if searchAgain == 'y':
+            main()
+
+    else:
+        print("End of program")
+
+#check if the ids match by reading the files
+def verifyLoan():
+    found = False
+
+    search = input("enter book ID:")
+    second_search = input("enter member ID:")
+
+    booksFile = open("BOOKS.txt", "r")
+    count = 0
+    for line in booksFile:
+
+        strippedLine = line.strip()
+        bookID, author, name, date = strippedLine.split(", ")
+
+        if bookID == search:
+            print("book ID:", bookID)
+            print()
+
+            count += 1
+
+            found = True
+
+    booksFile.close()
+    if found:
+        print("There is", count, "valid book ID for", search)
+
+    else:
+        print("there is no valid book ID found")
+
+
+    membersFile = open("MEMBERS.txt", "r")
+    count = 0
+    for line in membersFile:
+#read the whole file
+        strippedLine = line.strip()
+        memID, firstname, lastname, email = strippedLine.split(", ")
+#if the written id is correct print out that it is correct
+        if memID == second_search:
+            print("member ID:", memID)
+            print()
+
+            count += 1
+
+            found = True
+
+    membersFile.close()
+    if found:
+        print("There is", count, "valid member ID for", second_search)
+
+    else:
+        print("there was no valid member ID found")
+
+
+#create loan
+def create_loan():
+    another = "y"
+    while another.lower() == "y":
+        with open("LOANS.txt", "a") as loans_file:
+            import os
+            print("CWD:", os.getcwd())
+            print('Enter the following loan data:')
+            bookID = input('book ID: ')
+            memID = input('member ID: ')
+            loan_date = input('loaned date (DD/MM/YYYY): ')
+            return_date = input('return date (DD/MM/YYYY): ')
+
+            # Append the data to the file.
+            loans_file.write(f'{bookID}, {memID}, {loan_date}, {return_date}\n')
+
+        # Determine whether the user wants to add
+        # another record to the file.
+        another = input("do you want to create another loan? (Y = yes, anything else = no):")
+
+
+    loans_file.close()
+    print('Data appended to LOANS.txt')
+
+
+#return a book and delete the loan
+def searchReturn():
+    found = False
+
+    search = input("enter book ID:")
+
+    loansFile = open("LOANS.txt", "r")
+    count = 0
+    for line in loansFile:
+#check if book id is in the loans file
+        strippedLine = line.strip()
+        bookID, memID, loan_date, return_date = strippedLine.split(", ")
+
+        if bookID == search:
+            print("book ID:", bookID)
+            print()
+
+            count += 1
+
+            found = True
+
+    loansFile.close()
+    if found:
+        print("There is", count, "valid book ID for", search)
+
+    else:
+        print("there is no valid book ID found")
+
+#delete loan
+
+    with open("LOANS.txt", "r") as file:
+        lines = file.readlines()
+
+    lines_to_keep = [line for line in lines if search not in line]
+#delete the loan from the file
+    with open("LOANS.txt", "w") as file:
+        file.writelines(lines_to_keep)
+
+main()
+
+
