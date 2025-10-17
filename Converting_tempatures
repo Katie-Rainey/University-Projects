@@ -1,0 +1,20 @@
+temperature = float(input("Enter the temperature: "))
+source_sclae = input("Enter the source scale (F or C): ")
+
+#perform the conversion
+if source_scale == 'F':
+
+    # convert from celsius to fahrenheit
+    celsius = (temperature - 32) * 5/9
+    print(f"temperature in celsius: {celsius: .2f}")
+
+elif source_sclae == 'C':
+
+    # convert from celsius to fahrenheit
+    fahrenheit = (temperature * 9/5) + 32
+    print(f"temperature in fahrenheit: {fahrenheit: .2f}")
+
+else:
+    print("invalid scale")
+    print("please enter 'F' for fahrenheit or 'C' for 'celsisus")
+    
