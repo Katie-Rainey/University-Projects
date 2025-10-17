@@ -1,0 +1,21 @@
+#lab 3 week 3 task 1
+
+HIGH_SCORE= 70
+
+test1 = float(input('Enter score for test 1:'))
+test2 = float(input('Enter score for test 2:'))
+test3 = float(input('Enter score for test 3:'))
+test4 = float(input('Enter score for test 4:'))
+
+average = (test1+test2+test3+test4) /4
+
+print('The average score is', format(average,'.2f'))
+
+if average >= HIGH_SCORE:
+    print('Congratulations!')
+    print('That is a great average!')
+else:
+    print('mabye you should do more studying')
+
+
+
