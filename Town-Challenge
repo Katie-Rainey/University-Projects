@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.util.Random;
+public class TownChallenge{
+
+    public static void main(String[] args){
+
+    Random random = new Random();
+    int randomDigit1 = random.nextInt(9);
+    int randomDigit2 = random.nextInt(9);
+    int randomDigit3 = random.nextInt(9);
+    int randomDigit4 = random.nextInt(9);
+    int randomDigit5 = random.nextInt(9);
+    int randomDigit6 = random.nextInt(9);
+    int randomDigit7 = random.nextInt(9);
+    int randomDigit8 = random.nextInt(9);
+    System.out.printf("my randomly selected digits are %d %d %d %d %d %d %d %d \n",
+                       randomDigit1, randomDigit2,randomDigit3,randomDigit4,randomDigit5,randomDigit6,randomDigit7,randomDigit8);
+
+    Scanner keyboard = new Scanner(System.in);
+
+    System.out.print("what is the name of your town? > ");
+    String yourTown1 = keyboard.nextline();
+    System.out.printf("you entered &s \n", yourTown);
+
+        String[][] Towns = {{"banbridge","ballymena"},{"belfast","newry"},{"coleraine","enniskillen"},{"lurgan","portadown"}};
+        int[][] scores = new int[10][9];
+        System.out.println(scores[1][0]);
+
+        scores[1][2] = randomDigit1;
+        System.out.println(scores[1][randomDigit1]);
+        System.out.println(scores[2][randomDigit2]);
+
+        scores[3][4] = randomDigit3;
+        System.out.println(scores[3][randomDigit3]);
+        System.out.println(scores[4][randomDigit4]);
+
+        scores[5][6] = randomDigit5;
+        System.out.println(scores[5][randomDigit5]);
+        System.out.println(scores[6][randomDigit6]);
+
+        scores[7][8] = randomDigit7;
+        System.out.println(scores[7][randomDigit7]);
+        System.out.println(scores[8][randomDigit8]);
+
+
+    }}
