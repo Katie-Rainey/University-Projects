@@ -1,0 +1,30 @@
+#lab 3 week 3 task 3
+
+A_score = 90
+B_score = 80
+C_score = 70
+D_score = 60
+
+score1 = int(input('Enter your first test score: '))
+score2 = int(input('Enter your second test score: '))
+score3 = int(input('Enter your third test score: '))
+
+score_average = (score1+score2+score3) /3
+
+if score_average >= A_score:
+    print('Your grade is A.')
+elif score1 >= B_score:
+    print('Your grade is B.')
+elif score2 >= C_score:
+    print('Your grade is C.')
+elif score3 >= D_score:
+    print('Your grade is D.')
+else:
+    print('Your grade is F.')
+
+
+
+
+
+
+
