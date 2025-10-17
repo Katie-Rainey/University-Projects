@@ -1,0 +1,15 @@
+#com161 week2 task 5
+
+print('the car will travel the following distances:')
+
+hours_5 = 60*5
+
+hours_8 = 60*8
+
+hours_12 = 60*12
+
+print(f'{hours_5} in 5 hours.')
+
+print(f'{hours_8} in 8 hours.')
+
+print(f'{hours_12} in 12 hours.')
