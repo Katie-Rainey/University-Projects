@@ -1,0 +1,17 @@
+def read_text_file(filename):
+    file_variable = open(filename,'r')
+    text = file_variable.read()
+    file_variable.close()
+
+    print(text)
+
+read_text_file('text_file(1).txt')
+
+def main():
+    substring = input('please enter a substring: ')
+
+    if substring in text:
+        print('the substring method is in the string')
+
+    else:
+        print('the substring method is not in the string')
