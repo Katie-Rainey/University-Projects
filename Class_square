@@ -1,0 +1,68 @@
+from Shapes import Shape
+
+
+class Square(Shape):
+    __count_square = 0
+    def __init__(self,length):
+        super().__init__(length)
+        Square.__count_square += 1
+
+    def calculate_area(self):
+        return self._length * self._length
+
+    def calculate_boundary(self):
+        return self._length + self._length + self._length + self._length
+
+    @classmethod
+    def get_count(cls):
+        return cls.__count_square
+
+    def __str__(self):
+        return "Square Details:\n" + super().__str__()
+
+
+def main():
+    dimension = int(input('Enter dimension:'))
+
+    my_square = Square(dimension)
+    print(my_square)
+
+
+class Triangle(Shape):
+    __count_triangle = 0
+    def __init__(self,length):
+        super().__init__(length)
+        Triangle.__count_triangle += 1
+
+    def calculate_area(self):
+        return self._length * self._length * 0.5
+
+    def calculate_boundary(self):
+        return 2 * self._length + (2 * self._length ** 2) ** 0.5
+
+    @classmethod
+    def get_count(cls):
+        return cls.__count_triangle
+
+    def __str__(self):
+        return "Square Details:\n" + super().__str__()
+
+def main():
+    dimension = int(input('Enter dimension:'))
+
+    my_triangle = Square(dimension)
+    print(my_triangle)
+
+main()
+
+
+
+
+
+
+
+
+
+
+
+
